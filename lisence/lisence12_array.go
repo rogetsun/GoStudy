@@ -19,4 +19,5 @@ func main() {
 	//只给e[8]赋值12
 	e := [10]int{8:12}
 	fmt.Println(e)
+
 }
