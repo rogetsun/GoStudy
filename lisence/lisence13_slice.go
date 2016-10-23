@@ -13,7 +13,8 @@ func main() {
 	创建
 	 */
 	var s1 []int //直接定义slice
-	fmt.Println(s1)
+	ss1 := []int{1, 2, 3, 4, 5, 6, 7}//直接定义且赋值
+	fmt.Println(s1, ss1)
 
 	a1 := [...]int{9:3}
 	fmt.Println(a1)
@@ -43,5 +44,18 @@ func main() {
 	s4 = append(s4, 11, 11, 11, 11, 11)
 	s4 = append(s4, 23)
 	fmt.Println(s4, s5, a2)
+
+	/**
+	slice的copy。俄罗斯方块覆盖原则
+	 */
+	fmt.Println("slice的copy...")
+	sc1 := []int{1, 2, 3, 4, 5}
+	sc2 := []int{7, 8, 9}
+	copy(sc1, sc2)
+	fmt.Println(sc1, sc2)
+	sc3 := []int{1, 2, 3, 4, 5}
+	sc4 := []int{7, 8, 9}
+	copy(sc3[3:], sc4[1:2])//指定位置copy
+	fmt.Println(sc3, sc4)
 
 }
