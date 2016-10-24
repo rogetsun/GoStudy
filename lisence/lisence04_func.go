@@ -16,4 +16,5 @@ func main() {
 	x.increment()
 	x.increment()
 	fmt.Println(x)
+	fmt.Println(x + 10)
 }
