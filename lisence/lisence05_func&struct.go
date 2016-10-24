@@ -3,7 +3,7 @@ package main
 import "fmt"
 
 type user struct {
-	name string
+	name string //首字母小写只有类似方法一样，小写的只有同包能访问
 	age  uint8
 }
 //给结构体user定义方法ToString()
