@@ -24,4 +24,7 @@ func main() {
 	fmt.Println(m.title)
 	fmt.Println(m.user)
 
+	m2 := manager{user:user{age:11, name:"litxxxx"}, title:"title"}
+	fmt.Printf("%+v\n", m2)
+
 }
