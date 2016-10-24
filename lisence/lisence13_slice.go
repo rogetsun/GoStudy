@@ -58,4 +58,12 @@ func main() {
 	copy(sc3[3:], sc4[1:2])//指定位置copy
 	fmt.Println(sc3, sc4)
 
+	/**
+	遍历
+	range类似于一个迭代器，但是拿到的v是一个copy。当然如果v是一个复杂的引用类型，而非基本类型则类似js的特性。再14课map有测试
+	 */
+
+	for idx, v := range sc4 {
+		fmt.Printf("idx=%v, v=%v\n", idx, v)
+	}
 }
