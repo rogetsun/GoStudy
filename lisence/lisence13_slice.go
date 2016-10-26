@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	fmt "log"
+	"time"
+)
 /***
 slice是一个指向底层数组的引用，它是一个引用类型
 因此多个slice指向同一个底层数组，一个改变数组内容，全变
@@ -53,16 +56,53 @@ func main() {
 	sc2 := []int{7, 8, 9}
 	copy(sc1, sc2)
 	fmt.Println(sc1, sc2)
-	sc3 := []int{1, 2, 3, 4, 5}
+
+	sc3 := []int{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
 	sc4 := []int{7, 8, 9}
-	copy(sc3[3:], sc4[1:2])//指定位置copy
+	copy(sc4[2:], sc3[1:2])//指定位置copy
 	fmt.Println(sc3, sc4)
 
+	/**
+	slice-->chan 注意slice要重新分配内存
+	 */
+	fmt.Println("slice -> chan...")
+	var channel1 = make(chan []int, 3)
+	var done = make(chan bool, 1)
+	go func(channel1 chan <-[]int) {
+		var count = 2
+		sc3 = make([]int, 0, 20)
+		for i := 0; i < count; i++ {
+			for j := 0; j < 20; j++ {
+				sc3 = append(sc3, i * 100 + j + 1)
+			}
+			fmt.Printf("append: %v\n", sc3)
+			for m := 0; m < 20; m += 5 {
+				tsc := sc3[m: m + 5]
+				fmt.Printf("in channel:%v\n", tsc)
+				channel1 <- tsc
+			}
+		}
+		time.AfterFunc(time.Second * 2, func() {
+			fmt.Println("AfterFunc")
+			done <- true
+		})
+	}(channel1)
+	go func(channel <-chan []int) {
+		for {
+			data, ok := <-channel
+			if ok {
+				fmt.Println(data)
+			}
+		}
+	}(channel1)
+	<-done
+	//fmt.Println(<-channel1)
+	//fmt.Println(<-channel1)
 	/**
 	遍历
 	range类似于一个迭代器，但是拿到的v是一个copy。当然如果v是一个复杂的引用类型，而非基本类型则类似js的特性。再14课map有测试
 	 */
-
+	fmt.Println("遍历")
 	for idx, v := range sc4 {
 		fmt.Printf("idx=%v, v=%v\n", idx, v)
 	}
