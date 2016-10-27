@@ -3,6 +3,7 @@ package main
 import (
 	fmt "log"
 	"time"
+	"reflect"
 )
 /***
 slice是一个指向底层数组的引用，它是一个引用类型
@@ -106,4 +107,35 @@ func main() {
 	for idx, v := range sc4 {
 		fmt.Printf("idx=%v, v=%v\n", idx, v)
 	}
+
+	/**
+	slice len cap 测试
+	 */
+	fmt.Println("slice len cap 测试....")
+	sc5 := make([]int, 5, 5)
+	sc6 := make([]int, 1, 5)
+	arr1 := [5]int{}
+	sc7 := arr1[0:5]
+	fmt.Printf("sc5:len=%v, cap=%v;\tsc6:len=%v,cap=%v;\tsc7:len=%v,cap=%v\n", len(sc5), cap(sc5), len(sc6), cap(sc6), len(sc7), cap(sc7))
+	fmt.Println(sc5[0:5], sc6[0:5], sc7)
+	fmt.Println(arr1)
+	copy(sc5, sc3)
+	copy(sc6, sc3)
+	copy(sc7, sc3)
+	fmt.Printf("sc5:len=%v, cap=%v;\tsc6:len=%v,cap=%v;\tsc7:len=%v,cap=%v\n", len(sc5), cap(sc5), len(sc6), cap(sc6), len(sc7), cap(sc7))
+	fmt.Println(sc5[0:5], sc6[0:5], sc7)
+	fmt.Println(arr1)
+
+	/**
+	二维slice
+	 */
+	fmt.Println("二维slice...")
+	sc8 := make([][5]int, 1, 10)
+	sc9 := make([][]int, 1, 10)
+	fmt.Println(sc8, sc9)
+	fmt.Println(reflect.TypeOf(sc8).Kind(), reflect.TypeOf(sc8[0]).Kind())
+	fmt.Println(reflect.TypeOf(sc9).Kind(), reflect.TypeOf(sc9[0]).Kind())
+
 }
+
+
