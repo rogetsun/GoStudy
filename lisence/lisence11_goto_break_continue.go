@@ -27,4 +27,14 @@ func main() {
 	}
 	next:
 	fmt.Println("end")
+
+	//test goto
+	fmt.Println("test goto...")
+	var x int
+	X:
+	fmt.Println(x)
+	x ++
+	if x < 5 {
+		goto X
+	}
 }
