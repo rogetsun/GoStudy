@@ -137,6 +137,15 @@ func main() {
 	fmt.Println(reflect.TypeOf(sc8).Kind(), reflect.TypeOf(sc8[0]).Kind())
 	fmt.Println(reflect.TypeOf(sc9).Kind(), reflect.TypeOf(sc9[0]).Kind())
 
+	/**
+	地址测试
+	 */
+	fmt.Println("slice地址测试...")
+	sc10 := make([]int, 10)
+	fmt.Printf("%p, %p, %v", sc10, &sc10, sc10)
+	sc10 = make([]int, 10)
+	fmt.Printf("%p, %p, %v", sc10, &sc10, sc10)
+
 }
 
 
