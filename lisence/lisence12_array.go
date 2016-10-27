@@ -89,12 +89,12 @@ func main() {
 	arr1 := [5]int{1, 2, 3, 4, 5}
 	var arr2 *[5]int
 	arr1[2] = 1
-	arr2 = &arr1//数组地址复制到指针
-	fmt.Printf("%p, %v\n", &arr2, arr2)
-	fmt.Printf("%p, %v\n", &arr1, arr1)
+	arr2 = &arr1//数组地址复制到指针,类似生成切片
+	fmt.Printf("栈内存地址：%p, %v\n", &arr2, arr2)
+	fmt.Printf("栈内存地址：%p, %v\n", &arr1, arr1)
 
 	arr1 = [5]int{6, 7, 8, 9, 0}
-	fmt.Printf("%p, %v\n", &arr1, arr1)
+	fmt.Printf("栈内存地址：%p, %v\n", &arr1, arr1)
 
 	fmt.Println(arr1, arr2)
 	//地址测试 2 数组的指针
@@ -102,11 +102,11 @@ func main() {
 	var arr4 *[5]int
 	arr3[2] = 1
 	arr4 = arr3//指针复制
-	fmt.Printf("%p,%p, %v\n", arr4, &arr4, arr4)
-	fmt.Printf("%p,%p, %v\n", arr3, &arr3, arr3)
+	fmt.Printf("堆内存地址：%p,栈内存地址：%p, %v\n", arr4, &arr4, arr4)
+	fmt.Printf("堆内存地址：%p,栈内存地址：%p, %v\n", arr3, &arr3, arr3)
 
 	arr3 = new([5]int)
-	fmt.Printf("%p,%p, %v\n", arr3, &arr3, arr3)
+	fmt.Printf("堆内存地址：%p,栈内存地址：%p, %v\n", arr3, &arr3, arr3)
 
 	fmt.Println(arr3, arr4)
 
