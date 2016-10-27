@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"reflect"
+)
 /***
 
 go中数组非其他语言那样是一个引用类型，而是一个值类型，数组赋值是会copy一份的。
@@ -67,10 +70,19 @@ func main() {
 	fmt.Println(l)
 
 	//多维数组
+	fmt.Println("多维数组...")
 	m := [2][3]int{}
 	fmt.Println(m)
 	n := [...][4]int{{1, 2}, {2:3}}//只有顶级数组可以使用[...]
 	fmt.Println(n)
+
+	//类型测试
+	fmt.Println("类型测试...")
+	a1 := [5]int{}
+	a2 := [6]int{}
+	fmt.Println(reflect.TypeOf(a1), reflect.TypeOf(a2))
+
+
 	//地址测试
 	fmt.Println("array address test ...")
 	//地址测试 1 普通数组
