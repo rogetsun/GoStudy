@@ -43,10 +43,14 @@ func main() {
 	fmt.Println(len(g))
 
 	//数组指针 注意＊号,数组指针只能用var方式创建，不能:=,或者下面的new方式
+	fmt.Println("数组指针创建")
 	var h *[10]int = &g
+	fmt.Println(h)
+	h = new([10]int)
 	fmt.Println(h)
 
 	//指针数组 注意＊号
+	fmt.Println("指针数组")
 	v1, v2 := 1, 2
 	i := [...]*int{&v1, &v2}
 	fmt.Println(i)
