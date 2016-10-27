@@ -41,5 +41,7 @@ func main() {
 	time.Sleep(time.Second * 2)//2秒后加入第二个消费者
 	go consumer(2, data, done)
 	fmt.Println(<-done) //阻塞，等待处理结果
+
+
 }
 
