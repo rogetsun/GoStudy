@@ -142,9 +142,9 @@ func main() {
 	 */
 	fmt.Println("slice地址测试...")
 	sc10 := make([]int, 10)
-	fmt.Printf("%p, %p, %v", sc10, &sc10, sc10)
+	fmt.Printf("堆内存地址：%p, 栈内存地址：%p, %v", sc10, &sc10, sc10)
 	sc10 = make([]int, 10)
-	fmt.Printf("%p, %p, %v", sc10, &sc10, sc10)
+	fmt.Printf("堆内存地址：%p, 栈内存地址：%p, %v", sc10, &sc10, sc10)
 
 }
 
