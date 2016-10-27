@@ -114,8 +114,9 @@ func main() {
 	fmt.Println("slice len cap 测试....")
 	sc5 := make([]int, 5, 5)
 	sc6 := make([]int, 1, 5)
-	arr1 := [5]int{}
-	sc7 := arr1[0:5]
+	arr1 := [5]int{9, 9, 9, 9, 9}
+	sc7 := arr1[0:0]
+	sc7 = append(sc7, 0, 1, 1, 1, )
 	fmt.Printf("sc5:len=%v, cap=%v;\tsc6:len=%v,cap=%v;\tsc7:len=%v,cap=%v\n", len(sc5), cap(sc5), len(sc6), cap(sc6), len(sc7), cap(sc7))
 	fmt.Println(sc5[0:5], sc6[0:5], sc7)
 	fmt.Println(arr1)
