@@ -116,10 +116,10 @@ func main() {
 	sc6 := make([]int, 1, 5)
 	arr1 := [5]int{9, 9, 9, 9, 9}
 	sc7 := arr1[0:0]
-	sc7 = append(sc7, 0, 1, 1, 1, )
 	fmt.Printf("sc5:len=%v, cap=%v;\tsc6:len=%v,cap=%v;\tsc7:len=%v,cap=%v\n", len(sc5), cap(sc5), len(sc6), cap(sc6), len(sc7), cap(sc7))
 	fmt.Println(sc5[0:5], sc6[0:5], sc7)
 	fmt.Println(arr1)
+	sc7 = append(sc7, 0, 1, 1, 1)
 	copy(sc5, sc3)
 	copy(sc6, sc3)
 	copy(sc7, sc3)
