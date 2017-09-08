@@ -26,7 +26,7 @@ func producer(data chan int) {
 		time.Sleep(time.Second)
 	}
 	fmt.Println("producer end")
-	time.Sleep(time.Second * 5)//5秒后关闭数据通道
+	time.Sleep(time.Second * 5) //5秒后关闭数据通道
 	fmt.Println("data close")
 	close(data)
 }
@@ -38,10 +38,8 @@ func main() {
 	go consumer(1, data, done)
 
 	go producer(data)
-	time.Sleep(time.Second * 2)//2秒后加入第二个消费者
+	time.Sleep(time.Second * 2) //2秒后加入第二个消费者
 	go consumer(2, data, done)
 	fmt.Println(<-done) //阻塞，等待处理结果
 
-
 }
-

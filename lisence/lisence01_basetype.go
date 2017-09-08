@@ -2,8 +2,8 @@ package main
 
 import (
 	. "fmt"
-	"time"
 	"reflect"
+	"time"
 )
 
 func main() {

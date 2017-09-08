@@ -12,4 +12,3 @@ func main() {
 	fmt.Println(strconv.Atoi("65"))
 	fmt.Println(int('a'))
 }
-

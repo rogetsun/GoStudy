@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"reflect"
 )
+
 /***
 
 go中数组非其他语言那样是一个引用类型，而是一个值类型，数组赋值是会copy一份的。
@@ -15,7 +16,7 @@ go中数组非其他语言那样是一个引用类型，而是一个值类型，
 	可以理解为数组是值类型，放在栈内存，数组指针的指针值放在栈，底层数组放在堆
 	栈内存变量赋值是copy
 	详看地址测试
- */
+*/
 func main() {
 	//只定义类型，
 	var a [3]int
@@ -31,14 +32,14 @@ func main() {
 	fmt.Println(d)
 
 	//只给e[8]赋值12
-	e := [10]int{8:12}
+	e := [10]int{8: 12}
 	fmt.Println(e)
 
 	//不指定长度
 	f := [...]int{1, 3, 5, 7, 9}
 	fmt.Println(f)
 	fmt.Println(len(f))
-	g := [...]int{9:9}
+	g := [...]int{9: 9}
 	fmt.Println(g)
 	fmt.Println(len(g))
 
@@ -77,7 +78,7 @@ func main() {
 	fmt.Println("多维数组...")
 	m := [2][3]int{}
 	fmt.Println(m)
-	n := [...][4]int{{1, 2}, {2:3}}//只有顶级数组可以使用[...]
+	n := [...][4]int{{1, 2}, {2: 3}} //只有顶级数组可以使用[...]
 	fmt.Println(n)
 
 	//类型测试
@@ -86,14 +87,13 @@ func main() {
 	a2 := [6]int{}
 	fmt.Println(reflect.TypeOf(a1), reflect.TypeOf(a2))
 
-
 	//地址测试
 	fmt.Println("array address test ...")
 	//地址测试 1 普通数组
 	arr1 := [5]int{1, 2, 3, 4, 5}
 	var arr2 *[5]int
 	arr1[2] = 1
-	arr2 = &arr1//数组地址复制到指针,类似生成切片
+	arr2 = &arr1 //数组地址复制到指针,类似生成切片
 	fmt.Printf("栈内存地址：%p, %v\n", &arr2, arr2)
 	fmt.Printf("栈内存地址：%p, %v\n", &arr1, arr1)
 
@@ -105,7 +105,7 @@ func main() {
 	arr3 := new([5]int)
 	var arr4 *[5]int
 	arr3[2] = 1
-	arr4 = arr3//指针复制
+	arr4 = arr3 //指针复制
 	fmt.Printf("堆内存地址：%p,栈内存地址：%p, %v\n", arr4, &arr4, arr4)
 	fmt.Printf("堆内存地址：%p,栈内存地址：%p, %v\n", arr3, &arr3, arr3)
 

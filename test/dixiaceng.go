@@ -14,13 +14,14 @@ type res struct {
 
 var (
 	//食物单价
-	food = res{name:"food", price:45.0 / 1000.0, id:1, }
+	food = res{name: "food", price: 45.0 / 1000.0, id: 1}
 	//木材单价,生产方法
-	wood = res{name:"wood", price:140.0 / 1000.0, id:2, }
+	wood = res{name: "wood", price: 140.0 / 1000.0, id: 2}
 )
+
 /**
 生产模型
- */
+*/
 type mode struct {
 	p2food, p2wood, hour int
 }
@@ -30,7 +31,7 @@ func main() {
 	fmt.Println(ms)
 	person := 200
 	for i := 0; i < 200; i += 10 {
-		ms = append(ms, mode{p2food:i, p2wood:person - i, hour:1})
+		ms = append(ms, mode{p2food: i, p2wood: person - i, hour: 1})
 	}
 	fmt.Println(ms)
 	for _, m := range ms {
@@ -62,9 +63,9 @@ func produce(m mode) int {
 	foodValue := int(float32(initFood) * food.price)
 	woodValue := int(float32(initWood) * wood.price)
 	value := foodValue + woodValue
-	fmt.Printf("%v人生产 %v 小时(%v人食物,%v人木材):\n" +
-		"食物产出:%-10v\t  价值:%v\t\n" +
-		"木材产出:%-10v\t  价值:%v\t\n" +
+	fmt.Printf("%v人生产 %v 小时(%v人食物,%v人木材):\n"+
+		"食物产出:%-10v\t  价值:%v\t\n"+
+		"木材产出:%-10v\t  价值:%v\t\n"+
 		"总价值:%v金\n\n",
 		person, m.hour, personForFood, personForWood,
 		initFood, foodValue,
@@ -83,5 +84,3 @@ func makeWood(person int) (resultFood, resultWood int) {
 	resultWood = person * 1
 	return
 }
-
-

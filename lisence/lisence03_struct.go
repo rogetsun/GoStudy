@@ -8,7 +8,7 @@ type user struct {
 }
 
 type manager struct {
-	user //引入了user的属性
+	user  //引入了user的属性
 	title string
 }
 
@@ -24,7 +24,7 @@ func main() {
 	fmt.Println(m.title)
 	fmt.Println(m.user)
 
-	m2 := manager{user:user{age:11, name:"litxxxx"}, title:"title"}
+	m2 := manager{user: user{age: 11, name: "litxxxx"}, title: "title"}
 	fmt.Printf("%+v\n", m2)
 
 }

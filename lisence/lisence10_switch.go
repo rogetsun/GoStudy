@@ -17,7 +17,7 @@ func main() {
 	switch a := 0; {
 	case a >= 0:
 		fmt.Println("a>=0")
-		fallthrough//接的执行后面的case，但是不做条件检查，通swift
+		fallthrough //接的执行后面的case，但是不做条件检查，通swift
 	case a >= 1:
 		fmt.Println("a>=1")
 	default:

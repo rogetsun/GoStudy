@@ -6,13 +6,13 @@ import (
 )
 
 /**
-	defer 放在func内部的某一条语句表达式或函数左边定义，在func执行完毕后执行。且一定会执行。类似finally
-	一个函数内部可以有多个defer，顺序先进后出
-	defer内可以调用recover()获取func的panic(信息)。
+defer 放在func内部的某一条语句表达式或函数左边定义，在func执行完毕后执行。且一定会执行。类似finally
+一个函数内部可以有多个defer，顺序先进后出
+defer内可以调用recover()获取func的panic(信息)。
 
-	panic() 类似throw exception
-	recover() 类似catch
- */
+panic() 类似throw exception
+recover() 类似catch
+*/
 func main() {
 	defer fmt.Println("main ok")
 	defer func(a ...interface{}) {

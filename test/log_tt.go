@@ -1,9 +1,9 @@
 package main
 
 import (
+	"fmt"
 	log "github.com/skoo87/log4go"
 	"io/ioutil"
-	"fmt"
 	"os"
 )
 
@@ -28,4 +28,3 @@ func main() {
 
 	log.Info("fdsfds")
 }
-

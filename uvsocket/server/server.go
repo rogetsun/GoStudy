@@ -1,10 +1,10 @@
 package server
 
 import (
-	"os"
+	"GoStudy/uvsocket/server/analysis/byteAnalysis"
 	"fmt"
 	"net"
-	"GoStudy/uvsocket/server/analysis/byteAnalysis"
+	"os"
 )
 
 func Listen(host string, port string) {

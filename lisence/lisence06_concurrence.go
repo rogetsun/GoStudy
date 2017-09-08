@@ -9,7 +9,7 @@ var c int = 0
 
 func task(id int) {
 	for i := 0; i < 5; i++ {
-		c ++
+		c++
 		fmt.Printf("%d : %d----%d\n", id, i, c)
 		time.Sleep(time.Second)
 	}

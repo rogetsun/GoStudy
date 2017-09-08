@@ -24,7 +24,7 @@ func (p person) make(i int) (int, int) {
 	return 0, 0
 }
 func main() {
-	p := &person{name:"litx"}
+	p := &person{name: "litx"}
 	//p.mk = func(i int) (int, int) {
 	//	fmt.Println("person make ", i)
 	//	return i + 1, i + 2

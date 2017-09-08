@@ -1,3 +1,5 @@
 package channel
 
-var FrameByteChan = make(chan []byte, 100)
+import "GoStudy/uvsocket/serverConf"
+
+var FrameByteChan = make(chan []byte, serverConf.FRAME_BYTE_CHAN_SIZE)

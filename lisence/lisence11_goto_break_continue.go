@@ -4,7 +4,7 @@ import "fmt"
 
 func main() {
 	//break
-	label1:
+label1:
 	for i := 0; i < 10; i++ {
 		fmt.Println("out ", i)
 		if i > 3 {
@@ -25,15 +25,15 @@ func main() {
 			goto next
 		}
 	}
-	next:
+next:
 	fmt.Println("end")
 
 	//test goto
 	fmt.Println("test goto...")
 	var x int
-	X:
+X:
 	fmt.Println(x)
-	x ++
+	x++
 	if x < 5 {
 		goto X
 	}

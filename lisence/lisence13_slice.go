@@ -2,25 +2,26 @@ package main
 
 import (
 	fmt "log"
-	"time"
 	"reflect"
+	"time"
 )
+
 /***
 slice是一个指向底层数组的引用，它是一个引用类型
 因此多个slice指向同一个底层数组，一个改变数组内容，全变
 
 注意：
 	slice的容量（假设10）初始化后，如果超出了，会再次重新分配一个连续的内存，容量翻倍，变成20；在超出40
- */
+*/
 func main() {
 	/**
 	创建
-	 */
-	var s1 []int //直接定义slice
-	ss1 := []int{1, 2, 3, 4, 5, 6, 7}//直接定义且赋值
+	*/
+	var s1 []int                      //直接定义slice
+	ss1 := []int{1, 2, 3, 4, 5, 6, 7} //直接定义且赋值
 	fmt.Println(s1, ss1)
 
-	a1 := [...]int{9:3}
+	a1 := [...]int{9: 3}
 	fmt.Println(a1)
 	s2 := a1[5:8] //通过已经存在数组定义 s2的len()=8-5,cap()=len(a1)-5
 	fmt.Println(s2)
@@ -31,7 +32,7 @@ func main() {
 
 	/**
 	共享底层数组测试
-	 */
+	*/
 	fmt.Println("共享数组测试...")
 	a2 := [...]int{0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
 	fmt.Println(a2)
@@ -51,7 +52,7 @@ func main() {
 
 	/**
 	slice的copy。俄罗斯方块覆盖原则
-	 */
+	*/
 	fmt.Println("slice的copy...")
 	sc1 := []int{1, 2, 3, 4, 5}
 	sc2 := []int{7, 8, 9}
@@ -60,30 +61,30 @@ func main() {
 
 	sc3 := []int{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20}
 	sc4 := []int{7, 8, 9}
-	copy(sc4[2:], sc3[1:2])//指定位置copy
+	copy(sc4[2:], sc3[1:2]) //指定位置copy
 	fmt.Println(sc3, sc4)
 
 	/**
 	slice-->chan 注意slice要重新分配内存
-	 */
+	*/
 	fmt.Println("slice -> chan...")
 	var channel1 = make(chan []int, 3)
 	var done = make(chan bool, 1)
-	go func(channel1 chan <-[]int) {
+	go func(channel1 chan<- []int) {
 		var count = 2
 		sc3 = make([]int, 0, 20)
 		for i := 0; i < count; i++ {
 			for j := 0; j < 20; j++ {
-				sc3 = append(sc3, i * 100 + j + 1)
+				sc3 = append(sc3, i*100+j+1)
 			}
 			fmt.Printf("append: %v\n", sc3)
 			for m := 0; m < 20; m += 5 {
-				tsc := sc3[m: m + 5]
+				tsc := sc3[m : m+5]
 				fmt.Printf("in channel:%v\n", tsc)
 				channel1 <- tsc
 			}
 		}
-		time.AfterFunc(time.Second * 2, func() {
+		time.AfterFunc(time.Second*2, func() {
 			fmt.Println("AfterFunc")
 			done <- true
 		})
@@ -102,7 +103,7 @@ func main() {
 	/**
 	遍历
 	range类似于一个迭代器，但是拿到的v是一个copy。当然如果v是一个复杂的引用类型，而非基本类型则类似js的特性。再14课map有测试
-	 */
+	*/
 	fmt.Println("遍历")
 	for idx, v := range sc4 {
 		fmt.Printf("idx=%v, v=%v\n", idx, v)
@@ -110,7 +111,7 @@ func main() {
 
 	/**
 	slice len cap 测试
-	 */
+	*/
 	fmt.Println("slice len cap 测试....")
 	sc5 := make([]int, 5, 5)
 	sc6 := make([]int, 1, 5)
@@ -129,7 +130,7 @@ func main() {
 
 	/**
 	二维slice
-	 */
+	*/
 	fmt.Println("二维slice...")
 	sc8 := make([][5]int, 1, 10)
 	sc9 := make([][]int, 1, 10)
@@ -139,7 +140,7 @@ func main() {
 
 	/**
 	地址测试
-	 */
+	*/
 	fmt.Println("slice地址测试...")
 	sc10 := make([]int, 10)
 	fmt.Printf("堆内存地址：%p, 栈内存地址：%p, %v", sc10, &sc10, sc10)
@@ -147,5 +148,3 @@ func main() {
 	fmt.Printf("堆内存地址：%p, 栈内存地址：%p, %v", sc10, &sc10, sc10)
 
 }
-
-

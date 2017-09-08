@@ -15,7 +15,7 @@ import "fmt"
 return xxx语句汇编后是先给返回值赋值，再做一个空的return，( 赋值指令 ＋ RET指令)。
 defer的执行是被插入到return指令之前的，有了defer之后，就变成了(赋值指令 + CALL defer指令 + RET指令)。
 而在CALL defer函数中，有可能将最终的返回值改写了...也有可能没改写。总之，如果改写了，那么看上去就像defer是在return xxx之后执行的~
- */
+*/
 func main() {
 	fmt.Println(f1())
 	fmt.Println(f2())
@@ -41,4 +41,3 @@ func f1() (result int) {
 	}()
 	return 0
 }
-

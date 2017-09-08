@@ -11,14 +11,14 @@ func main() {
 	done := make(chan int)
 
 	fmt.Println(cn1, cn2)
-	go func(cns []chan <- int) {
+	go func(cns []chan<- int) {
 		for i := 0; i < 10; i++ {
 			for _, c := range cns {
 				c <- i
 			}
 			time.Sleep(time.Second)
 		}
-	}([]chan <-int{cn1, cn2})
+	}([]chan<- int{cn1, cn2})
 
 	go func(c1 <-chan int, c2 <-chan int) {
 		cnt := 0
@@ -32,7 +32,7 @@ func main() {
 				fmt.Println("get c2:", i)
 			default:
 				fmt.Println("no data sleep 0.5s")
-				cnt ++
+				cnt++
 				if cnt > 5 {
 					done <- 1
 				} else {
