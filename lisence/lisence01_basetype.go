@@ -75,4 +75,7 @@ func main() {
 	x := "奇怪"
 	Println(x)
 	Println(reflect.TypeOf(x))
+
+	x1, x2, x3 := 1, 2, 3
+	Printf("[%d][%d][%d]", x1, x2, x3)
 }
