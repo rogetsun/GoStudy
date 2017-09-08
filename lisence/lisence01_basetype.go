@@ -3,6 +3,7 @@ package main
 import (
 	. "fmt"
 	"time"
+	"reflect"
 )
 
 func main() {
@@ -22,7 +23,6 @@ func main() {
 	Println(c)
 	var str1 string = "\\\""
 
-
 	//这里用到了字符串格式化函数。其中，%q用于显示字符串值的表象值并用双引号包裹。
 	Printf("用解释型字符串表示法表示的 %q 所代表的是 %s。%d\n", str1, str1, c)
 	var arr1 = [3]int{1, 2, 3}
@@ -33,7 +33,6 @@ func main() {
 	var arr3 [5]int
 	Println(arr3)
 
-
 	/**切片,实现了动态数组的功能*/
 	//创建一个初始元素个数为5的数组切片，元素初始值为0，并预留10个元素的存储空间
 	Println("切片")
@@ -43,19 +42,17 @@ func main() {
 	//继续切片，注意len和cap的变化
 	b = b[:cap(b)] // len(b)=5, cap(b)=5
 	Printf("arr is %v, \tlen(b)=%d,cap(b)=%d\n", b, len(b), cap(b))
-	b = b[1:]      // len(b)=4, cap(b)=4
+	b = b[1:] // len(b)=4, cap(b)=4
 	Printf("arr is %v, \tlen(b)=%d,cap(b)=%d\n", b, len(b), cap(b))
 	b = append(b, 2)
 	b = append(b, 3)
-	Println(b)//此时已经11个元素
-
+	Println(b) //此时已经11个元素
 
 	//访问底层数组
 	var arr4 = arr2[1:3]
 	Println(len(arr4))
 	arr4 = arr4[:cap(arr4)]
 	Println(arr4)
-
 
 	/**字典类型*/
 	Println("字典")
@@ -75,4 +72,7 @@ func main() {
 	rn, err := Println("123")
 	Printf("%v, %v\n", rn, err)
 
+	x := "奇怪"
+	Println(x)
+	Println(reflect.TypeOf(x))
 }
